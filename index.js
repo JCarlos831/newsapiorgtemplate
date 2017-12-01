@@ -1,9 +1,6 @@
 /*global $ APIKEY*/
 $(document).ready(function() {
-    
-    var idName = document.getElementById("selection").value;
-    
-    $.ajax({
+      $.ajax({
       method: "GET",
       url: "https://newsapi.org/v2/sources",
       data: { category: "technology", country: "us",  language: "en", apiKey: APIKEY},
@@ -24,11 +21,13 @@ $(document).ready(function() {
     $("#source").submit(function(event){
         event.preventDefault();
         document.getElementById("results").innerHTML = "";
+        var idName = document.getElementById("selection").value;
+        console.log(idName);
     
       $.ajax({
         method: "GET",
-        url: "https://newsapi.org/v2/top-headlines?sources=" + idName,
-        data: { sources: idName, category: "technology", country: "us", language: "en", apiKey: APIKEY},
+        url: "https://newsapi.org/v2/top-headlines",
+        data: {sources: idName, apikey: APIKEY},
         success: function(data){
             if(data.status === "ok"){
                 console.log(data);
