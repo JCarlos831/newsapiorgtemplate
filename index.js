@@ -1,5 +1,8 @@
 /*global $ APIKEY*/
 $(document).ready(function() {
+    
+    var idName = document.getElementById("selection").value;
+    
     $.ajax({
       method: "GET",
       url: "https://newsapi.org/v2/sources",
@@ -13,8 +16,6 @@ $(document).ready(function() {
                   source.innerHTML = data.sources[i].name;
                   document.getElementById("selection").appendChild(source);
               }
-          }else{
-              alert(data.message);
           }
       }
 
@@ -22,10 +23,24 @@ $(document).ready(function() {
     
     $("#source").submit(function(event){
         event.preventDefault();
-        alert(document.getElementById("selection").value);
+        document.getElementById("results").innerHTML = "";
+    
+      $.ajax({
+        method: "GET",
+        url: "https://newsapi.org/v2/top-headlines?sources=" + idName,
+        data: { sources: idName, category: "technology", country: "us", language: "en", apiKey: APIKEY},
+        success: function(data){
+            if(data.status === "ok"){
+                console.log(data);
+                $("#results");
+                for(var i = 0; i < data.articles.length; i++){
+                    var article = document.createElement("P");
+                    article.innerHTML = data.articles[i].title;
+                    document.getElementById("results").appendChild(article);
+                }
+            }
+        }
+  
+      });
     });
-    // .done(function(data) {
-    //     console.log(data);
-    //     console.log(data.status);
-    // });
-})
+});
