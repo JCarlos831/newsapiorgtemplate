@@ -34,6 +34,7 @@ $(document).ready(function() {
                 $("#results");
                 for(var i = 0; i < data.articles.length; i++){
                     var article = document.createElement("P");
+                    article.setAttribute("class", "col-sm-6");
                     article.innerHTML = data.articles[i].title;
                     document.getElementById("results").appendChild(article);
                 }
