@@ -22,7 +22,7 @@ $(document).ready(function() {
         event.preventDefault();
         document.getElementById("results").innerHTML = "";
         var idName = document.getElementById("selection").value;
-        console.log(idName);
+        // console.log(idName);
     
       $.ajax({
         method: "GET",
@@ -34,9 +34,14 @@ $(document).ready(function() {
                 $("#results");
                 for(var i = 0; i < data.articles.length; i++){
                     var article = document.createElement("P");
-                    article.setAttribute("class", "col-sm-6");
-                    article.innerHTML = data.articles[i].title;
-                    document.getElementById("results").appendChild(article);
+                    var headlineLink = document.createElement("a");
+                    headlineLink.setAttribute("target", "_blank");
+                    // article.setAttribute("class", "col-sm-6");
+                    // article.innerHTML = data.articles[i].title;
+                    // article.innerHTML = data.articles[i].description;
+                    headlineLink.href = data.articles[i].url;
+                    headlineLink.innerHTML = data.articles[i].title;
+                    document.getElementById("results").appendChild(article).appendChild(headlineLink);
                 }
             }
         }
