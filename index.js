@@ -33,15 +33,16 @@ $(document).ready(function() {
                 console.log(data);
                 $("#results");
                 for(var i = 0; i < data.articles.length; i++){
+                    var headlineLink = document.createElement("A");
                     var article = document.createElement("P");
-                    var headlineLink = document.createElement("a");
                     headlineLink.setAttribute("target", "_blank");
+                    // var newsDesc = document.createElement("P");
                     // article.setAttribute("class", "col-sm-6");
                     // article.innerHTML = data.articles[i].title;
-                    // article.innerHTML = data.articles[i].description;
-                    headlineLink.href = data.articles[i].url;
+                    // headlineLink.innerHTML = data.articles[i].description;
                     headlineLink.innerHTML = data.articles[i].title;
-                    document.getElementById("results").appendChild(article).appendChild(headlineLink);
+                    headlineLink.href = data.articles[i].url;
+                    document.getElementById("results").appendChild(headlineLink).appendChild(article);
                 }
             }
         }
