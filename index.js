@@ -3,7 +3,7 @@ $(document).ready(function() {
       $.ajax({
       method: "GET",
       url: "https://newsapi.org/v2/sources",
-      data: { category: "technology", country: "us",  language: "en", apiKey: APIKEY},
+      data: { /*category: "technology",*/ country: "us",  language: "en", apiKey: APIKEY},
       success: function(data){
           if(data.status === "ok"){
               console.log(data);
