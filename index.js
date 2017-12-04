@@ -35,7 +35,7 @@ $(document).ready(function() {
                 for(var i = 0; i < data.articles.length; i++){
                     // var headlineLink = document.createElement("LI");
                     var headlineLink = document.createElement("A");
-                    headlineLink.setAttribute("href", "data.articles[i].url");
+                    headlineLink.setAttribute("href", data.articles[i].url);
                     headlineLink.setAttribute("style", "font-size: 1.25em; font-weight: bold");
                     // var newsLi = document.createElement("LI");
                     var article = document.createElement("P");
