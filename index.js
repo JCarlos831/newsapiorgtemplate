@@ -33,16 +33,22 @@ $(document).ready(function() {
                 console.log(data);
                 $("#results");
                 for(var i = 0; i < data.articles.length; i++){
+                    // var headlineLink = document.createElement("LI");
                     var headlineLink = document.createElement("A");
+                    headlineLink.setAttribute("href", "data.articles[i].url");
+                    headlineLink.setAttribute("style", "font-size: 1.25em; font-weight: bold");
+                    // var newsLi = document.createElement("LI");
                     var article = document.createElement("P");
                     headlineLink.setAttribute("target", "_blank");
                     // var newsDesc = document.createElement("P");
                     // article.setAttribute("class", "col-sm-6");
                     // article.innerHTML = data.articles[i].title;
-                    // headlineLink.innerHTML = data.articles[i].description;
                     headlineLink.innerHTML = data.articles[i].title;
-                    headlineLink.href = data.articles[i].url;
-                    document.getElementById("results").appendChild(headlineLink).appendChild(article);
+                    // headlineLink.href = data.articles[i].url;
+                    article.innerHTML = data.articles[i].description;
+                    // document.getElementById("results").appendChild(newsLi);
+                    document.getElementById("results").appendChild(headlineLink);
+                    document.getElementById("results").appendChild(article);
                 }
             }
         }
